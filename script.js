@@ -94,3 +94,51 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     footer.classList.toggle('show-animate', this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight);
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to animate the progress bar
+    function animateProgressBar(progressContainer) {
+        const progressBar = progressContainer.querySelector('.progress-bar');
+        const progressPercent = progressContainer.querySelector('.progress-percent');
+        const targetWidth = progressBar.getAttribute('data-width'); 
+
+        // Set initial width and percent position
+        let currentWidth = 0;
+        let interval = setInterval(function() {
+            if (currentWidth >= targetWidth) {
+                clearInterval(interval); 
+            } else {
+                currentWidth++; 
+                progressBar.style.width = currentWidth + '%'; 
+                progressPercent.style.left = currentWidth + '%'; 
+                progressPercent.textContent = currentWidth + '%'; 
+            }
+        }, 20); 
+    }
+
+    // Set up IntersectionObserver
+    const observerOptions = {
+        root: null, 
+        rootMargin: '0px',
+        threshold: 0.1 
+    };
+
+    // Create an observer callback
+    const observerCallback = function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressContainer = entry.target;
+                animateProgressBar(progressContainer); 
+                observer.unobserve(progressContainer); 
+            }
+        });
+    };
+
+    
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+   
+    const progressContainers = document.querySelectorAll('.progress-container');
+    progressContainers.forEach(function(container) {
+        observer.observe(container); 
+    });
+});

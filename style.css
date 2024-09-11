@@ -117,7 +117,6 @@ section {
     -webkit-text-stroke: .7px var(--main-color);
     background-image: linear-gradient(var(--main-color), rgb(9, 73, 54));
     background-repeat: no-repeat;
-    -webkit-background-clip: text;
     background-position: -33rem 0;
 }
 
@@ -400,14 +399,14 @@ span {
 .title-link {
     display: flex;
     align-items: center;
-    gap: 
+    
 }
 
 .link-icon {
     color: rgb(11, 48, 43);
-    font-size: 20px; 
+    font-size: 20px;
     text-decoration: none;
-    transition: color 0.3s; 
+    transition: color 0.3s ease-in-out;
 }
 
 .link-icon:hover {
@@ -527,8 +526,8 @@ span {
     gap: 5rem;
 }
 
-.edu-row .edu-column{
-    flex: 1 1 40rem;
+.edu-row .edu-column {
+    flex: 1 1 50rem; /* Increased from 40rem to 50rem */
 }
 
 .wrapper {
@@ -578,84 +577,6 @@ span {
     pointer-events: none;
 }
 
-.edu-column .title {
-    position: relative;
-    color: #000000;
-    display: inline-block;
-    font-size: 2.5rem;
-    margin: 0 0 1.5rem;
-}
-
-.edu-column .edu-box{
-    position: relative;
-}
-
-.edu-box .edu-content {
-    position: relative;
-    border: .2rem solid var(--main-color);
-    border-radius: .6rem;
-    padding: .5rem 1.5rem;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.edu-box .edu-content::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--bg-color);
-    z-index: -1;
-    transition: .5s;
-}
-
-.edu-box .edu-content:hover::before{
-    width: 100%;
-}
-
-.edu-content .progress {
-    padding: 2rem 0;
-}
-
-.edu-content .progress h3 {
-    font-size: 2rem;
-    color: #000000;
-    display: flex;
-    justify-content: space-between;
-}
-
-.edu-content .progress h3 span{
-    color: var(--main-color);
-}
-
-.edu-content .progress .bar {
-    height: 2.5rem;
-    border-radius: .6rem;
-    border: .2rem solid var(--main-color);
-    padding: .5rem;
-    margin: 1rem 0;
-}
-
-.edu-content .progress .bar span {
-    display: block;
-    height: 100%;
-    border-radius: 3rem;
-    background: var(--main-color);
-}
-
-.edu-column:nth-child(1) .edu-content .progress:nth-child(1) .bar span{
-    width: 70%;
-}
-
-.edu-column:nth-child(1) .edu-content .progress:nth-child(2) .bar span{
-    width: 45%;
-}
-
-.edu-column:nth-child(1) .edu-content .progress:nth-child(3) .bar span{
-    width: 65%;
-}
 
 /*portfolio*/
 
@@ -664,7 +585,7 @@ span {
 }
 
 .project__card {
-    background-color: var(--first-color-alt);
+    background-color: #2c3e50;;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -1131,4 +1052,97 @@ border-top-color: #f9c922; /* Chrome, Opera 15+, Safari 5+ */ animation: spin 1.
 	100% {  /* Chrome, Opera 15+, Safari 3.1+ */  /* IE 9 */
 		transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
 	}
+}
+
+
+.edu-column {
+    padding: 2rem;
+    background-color: #f8f9fa; 
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Title Styling */
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50; 
+    margin-bottom: 2rem;
+}
+
+/* Sub-heading for each progress bar */
+.edu-content h4 {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2c3e50; 
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 0.5rem;
+}
+
+/* Progress bar percentage styling */
+.progress-percent {
+    font-weight: 600;
+    color: #1abc9c; 
+}
+
+/* Progress bar styling */
+.progress {
+    height: 1.5rem; 
+    background-color: #dfe6e9; 
+    border-radius: 5px;
+}
+/* css ni cya direa */
+.progress-bar {
+    background-color: #3498db; 
+    transition: width 2s ease-in-out;
+    border-radius: 5px;
+}
+
+/* Javscript */
+.bg-warning {
+    background-color: #f39c12 !important; 
+}
+/* html */
+.bg-danger {
+    background-color: #e74c3c !important; 
+}
+
+
+@media (max-width: 768px) {
+    .edu-column {
+        padding: 1rem;
+    }
+}
+
+.progress-container {
+    margin-bottom: 1.5rem;
+}
+
+
+@keyframes progress-animation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+
+.progress-container {
+    position: relative; 
+    margin-bottom: 1.5rem;
+}
+
+/* para ma responsive via css */
+@keyframes progress-animation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
 }
